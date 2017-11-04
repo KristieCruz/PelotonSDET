@@ -1,5 +1,6 @@
 WeatherRun:
-Weather app utilizing the Google API to help runners know what to wear based on weather. 
+Weather app utilizing the Google API to help runners know what to wear based on weather. Developed when I studied abroad ina group of 4 developers - we equally contributed and I was most interested in user experience. 
+
 How to run the user interface
 
 The app opens up to a homepage.
