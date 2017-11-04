@@ -19,7 +19,11 @@ What OpenWeatherCity is doing: using the endpoint of the OpenWeatherAPI to deter
 What OpenWeatherCity is doing:
 OpenWeatherCity is using API keys to instantiate the browser to find and print the minimum and maximum temperature of the city the user enters. 
 With more time: 
-OpenWeatherCity would have investigated how to handle GET and POST requests and the imports and protocols necessary.
+OpenWeatherCity would have investigated how to handle GET and POST requests and the imports and protocols necessary for OpenWeather, similar to the WeatherRun app developed in my junior year (included in this repository). 
 
+DominoesK: 
+Simulator of traditional Domino game (user vs computer developed in my freshman year of college)
+WeatherRun:
+Weather app utilizing the Google API to help runners know what to wear based on weather. 
 
 
