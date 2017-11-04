@@ -1,0 +1,146 @@
+
+package pelotonShop;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.WebElement;
+
+
+public class PelotonLoginandShop {
+    
+    public static void main(String[] args) {
+        // instantiate browser
+        //System.setProperty("webdriver.gecko.driver”;"/Users/cruz/eclipse-workspace/PelotonAssignment/geckodriver");
+        WebDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        //launch Peloton shop
+        String pelotonshop = "https://www.pelotoncycle.com";
+        String loginpage = "https://www.onepeloton.com/login";
+        String successfulLogin = "https://www.onepeloton.com/profile/";
+        String passwords[] = {"ILoveToRide", "", "", "ILoveToRide", "ILoveToRid", "ILoveToRide", "ILoveToRid"};
+        String usernames[] = {"pelotonqa@gmail.com", "", "pelotonqa@gmail.com", "", "pelotonqa@gmail.c", "pelotonqa@gmail.co", "pelotonqa@gmail.com"};
+        driver.get(pelotonshop);
+        //wait for Peloton Shop to load
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        System.out.println("Welcome to Peloton Interactive! Please login for an even more interactive cycle experience.");
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //go to login page -- one method of finding Sign In option
+        boolean status = driver.findElement(By.partialLinkText("SIGN IN")).isDisplayed();
+        if(status) {
+            for (int i = 0; i<6; i++)
+            {for (int j=0; j<6; j++)
+            {
+                driver.findElement(By.partialLinkText("SIGN IN")).click();
+                driver.findElement(By.name("usernameOrEmail")).sendKeys(usernames[i]);
+                driver.findElement(By.name("password")).sendKeys(passwords[j]);
+                driver.findElement(By.id("SignIn")).click();
+                if(driver.getCurrentUrl().equals(successfulLogin))
+                {System.out.println("Welcome!");
+                    //driver.findElement.By.partialLinkText("MY ACCOUNT").click();
+                    //driver.findElement.By.partialLinkTest("LOGOUT").click();
+                }else
+                {System.out.println("Incorrect email or password. Please try again.");}
+                driver.navigate().back();
+            }
+            }
+        }
+        //when isDisplayed throws exception
+        else {
+            driver.navigate().to(loginpage);
+            driver.findElement(By.name("usernameOrEmail")).sendKeys("pelotonqa@gmail.com");
+            driver.findElement(By.name("password")).sendKeys("ILoveToRide");
+            driver.findElement(By.id("SignIn")).click();
+            if(driver.getCurrentUrl().equals(successfulLogin))
+            {System.out.println("Welcome!");
+            }else
+            {System.out.println("Incorrect email or password. Please try again.");
+                driver.navigate().back();
+                //case 2: email and password blank
+                driver.navigate().to(loginpage);
+                driver.findElement(By.name("usernameOrEmail")).sendKeys("");
+                driver.findElement(By.name("password")).sendKeys("");
+                driver.findElement(By.id("SignIn")).click();
+                if(driver.getCurrentUrl().equals(successfulLogin))
+                {System.out.println("Welcome!");
+                }else
+                {System.out.println("Incorrect email or password. Please try again.");
+                    driver.navigate().back();
+                    //case 3: email entered and password blank.
+                    driver.navigate().to(loginpage);
+                    driver.findElement(By.name("usernameOrEmail")).sendKeys("pelotonqa@gmail.com");
+                    driver.findElement(By.name("password")).sendKeys("");
+                    driver.findElement(By.id("SignIn")).click();
+                    if(driver.getCurrentUrl().equals(successfulLogin))
+                    {System.out.println("Welcome!");
+                    }else
+                    {System.out.println("Incorrect email or password. Please try again.");
+                        driver.navigate().back();
+                        //case 4:email blank and password entered.
+                        driver.navigate().to(loginpage);
+                        driver.findElement(By.name("usernameOrEmail")).sendKeys("");
+                        driver.findElement(By.name("password")).sendKeys("ILoveToRide");
+                        driver.findElement(By.id("SignIn")).click();
+                        if(driver.getCurrentUrl().equals(successfulLogin))
+                        {System.out.println("Welcome!");
+                        }else
+                        {System.out.println("Incorrect email or password. Please try again.");
+                            driver.navigate().back();
+                            //case 5: email and password incorrect.
+                            driver.navigate().to(loginpage);
+                            driver.findElement(By.name("usernameOrEmail")).sendKeys("pelotonq@gmail.com");
+                            driver.findElement(By.name("password")).sendKeys("ILoveToRid");
+                            driver.findElement(By.id("SignIn")).click();
+                            if(driver.getCurrentUrl().equals(successfulLogin))
+                            {System.out.println("Welcome!");
+                            }else
+                            {System.out.println("Incorrect email or password. Please try again.");
+                                driver.navigate().back();}
+                            //case 6: email incorrect and password correct
+                            driver.navigate().to(loginpage);
+                            driver.findElement(By.name("usernameOrEmail")).sendKeys("pelotonq@gmail.com");
+                            driver.findElement(By.name("password")).sendKeys("ILoveToRide");
+                            driver.findElement(By.id("SignIn")).click();
+                            if(driver.getCurrentUrl().equals(successfulLogin))
+                            {System.out.println("Welcome!");
+                            }else
+                            {System.out.println("Incorrect email or password. Please try again.");
+                                driver.navigate().back();}
+                            //case 7: correct email and password incorrect
+                            driver.navigate().to(loginpage);
+                            driver.findElement(By.name("usernameOrEmail")).sendKeys("pelotonqa@gmail.com");
+                            driver.findElement(By.name("password")).sendKeys("ILoveToRid");
+                            driver.findElement(By.id("SignIn")).click();
+                            if(driver.getCurrentUrl().equals(successfulLogin))
+                            {System.out.println("Welcome!");
+                            }else
+                            {System.out.println("Incorrect email or password. Please try again.");
+                                driver.navigate().back();}
+                        }}
+                    
+                    //if the email and password are correct, the biker is redirected to onepeloton.com/profile/
+                    //if successfulLogin = driver.getCurrentUrl();
+                    //driver.findElement.By.partialLinkText("MY ACCOUNT").click();
+                    //driver.findElement.By.partialLinkTest("LOGOUT").click();
+                    
+                    //adding to cart
+                    driver.findElement(By.linkText("SHOP")).click();
+                    //driver.findElement(By.partialLinkText("SHOP"));
+                    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+                    driver.findElement(By.partialLinkText("BIKE")).click();
+                    driver.findElement(By.id("addBikeBtn")).click();
+                    driver.findElement(By.id("1-year-standard-peloton")).click();
+                    driver.findElement(By.id("shopFooterCTAButton")).click();
+                    driver.navigate().refresh();
+                    driver.close();
+                }
+            }
+        }
+        
+        
+    }
+}
+
+
+
+
